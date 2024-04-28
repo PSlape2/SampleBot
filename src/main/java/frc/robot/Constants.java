@@ -54,6 +54,12 @@ public class Constants {
         public static final int kCurrentLimit = 45;
         public static final int kSmartCurrentLimit = 40;
 
+        public static final double kPTheta = 0;
+
+        public static final double kITheta = 0;
+
+        public static final double kDTheta = 0;
+
         public static class ModuleConstants {
             public static final double kWheelDiameterMeters = Units.inchesToMeters(
                 4);
@@ -72,6 +78,8 @@ public class Constants {
             public static final double kITurning = 0.0;
             public static final double kDTurning = 0.0;
             public static final double MAX_TURN_ERROR_DEGREES = 0.5;
+            public static final double kSDrive = 0;
+            public static final double kVDrive = 0;
         }
     }
 }
