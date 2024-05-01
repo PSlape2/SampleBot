@@ -1,5 +1,7 @@
 package frc.robot.subsystems.swerve.telemetry;
 
+import com.kauailabs.navx.frc.AHRS;
+
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
@@ -10,7 +12,7 @@ import frc.robot.Constants.DriveConstants;
 public class SwerveIOReal implements SwerveIO {
     private SwerveModuleNeo[] modules;
 
-    private ADXRS450_Gyro gyro;
+    private AHRS gyro;
 
     private ChassisSpeeds lastSpeeds;
 
@@ -18,7 +20,7 @@ public class SwerveIOReal implements SwerveIO {
         for(int i = 0; i < 4; i++) {
             modules[i] = new SwerveModuleNeo(i);
         }
-        gyro = new ADXRS450_Gyro(SPI.Port.kMXP);
+        gyro = new AHRS(SPI.Port.kMXP);
         lastSpeeds = new ChassisSpeeds();
     }
 
@@ -27,6 +29,9 @@ public class SwerveIOReal implements SwerveIO {
         inputs.heading = getHeading();
         inputs.turnSpeed = lastSpeeds.omegaRadiansPerSecond;
         inputs.speed = getSpeed();
+        for(int i = 0; i < 4; i++) {
+            modules[i].update();
+        }
     }
 
     @Override

@@ -75,6 +75,10 @@ public class SwerveModuleNeo {
         setDriveVelocity(state.speedMetersPerSecond);
     }
 
+    /**
+     * Calculates whether to travel to the 
+     * @param angle
+     */
     public void setReferenceAngle(double angle) {
         double currentAngle = getTurnPosition();
 

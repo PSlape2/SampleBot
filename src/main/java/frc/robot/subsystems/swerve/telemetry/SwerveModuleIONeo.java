@@ -64,6 +64,7 @@ public class SwerveModuleIONeo implements SwerveModuleIO {
         magnetConfigs.withSensorDirection(SensorDirectionValue.CounterClockwise_Positive);
 
         absoluteEncoder.getConfigurator().apply(magnetConfigs);
+        absoluteEncoder.getPosition().setUpdateFrequency(ModuleConstants.CANCODER_UPDATE_FREQUENCY);
 
         driveFeedForward = new SimpleMotorFeedforward(ModuleConstants.kSDrive, ModuleConstants.kVDrive);
     }
